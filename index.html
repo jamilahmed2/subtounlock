@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SubToUnlock</title>
+    <style>
+        .stu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #subtounlock-btn,
+        #download-btn {
+            background-color: red;
+            color: white;
+            border-radius: 20px;
+            border: none;
+            display: block;
+            margin: 20px;
+            padding: 20px;
+            font-size: 16px;
+        }
+
+        #download-btn {
+            display: none;
+        }
+
+        #subtounlock-btn:hover,
+        #download-btn:hover {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+
+        #wait {
+            display: none;
+            color: #FCB900;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="stu">
+        <button id="subtounlock-btn" onclick="handleSubToUnlock()">Subscribe to Download</button>
+        <h2 id="wait">Please wait 10 seconds to download</h2>
+        <button id="download-btn" onclick="handleDownload()">Download</button>
+    </div>
+
+    <script>
+        function handleSubToUnlock() {
+            // Open YouTube channel in a new browser window
+            window.open('https://www.youtube.com/@channel name', '_blank');
+            document.getElementById('wait').style.display = 'block';
+
+            // Simulate a 10-second countdown
+            let countdown = 10;
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                document.getElementById('wait').innerText = `Please wait ${countdown} seconds to download`;
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById('wait').style.display = 'none';
+                    document.getElementById('subtounlock-btn').style.display = 'none';
+                    document.getElementById('download-btn').style.display = 'block';
+                }
+            }, 1000);
+        }
+
+        function handleDownload() {
+            // Add your download logic here
+            window.location.href = 'download link';
+        }
+    </script>
+
+</body>
+
+</html>
